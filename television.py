@@ -11,15 +11,24 @@ class Television():
 
 
     def power(self):
+        """
+        Method to toggle the tv power status.
+        """
         self._status = not self._status
 
 
     def mute(self):
+        """
+        Method to toggle mute if tv is on
+        """
         if self._status:
             self._muted = not self._muted
 
 
     def channel_up(self):
+        """
+        Method to decrease the tv channel.
+        """
         if self._status:
             if self._channel < Television.MAX_CHANNEL:
                 self._channel += 1
@@ -27,6 +36,9 @@ class Television():
                 self._channel = Television.MIN_CHANNEL
 
     def channel_down(self):
+        """
+        Method to decrease the tv channel.
+        """
         if self._status:
             if self._channel > Television.MIN_CHANNEL:
                 self._channel -= 1
@@ -34,6 +46,9 @@ class Television():
                 self._channel = Television.MAX_CHANNEL
 
     def volume_up(self):
+        """
+        Method to increase the volume of the channel.
+        """
         if self._status:
             if self._volume < Television.MAX_VOLUME:
                 self._volume += 1
@@ -41,6 +56,9 @@ class Television():
                 self._volume = Television.MAX_VOLUME
             self._muted = False
     def volume_down(self):
+        """
+        Method to decrease the volume of the channel.
+        """
         if self._status:
             if self._volume > Television.MIN_VOLUME:
                 self._volume -= 1
@@ -48,6 +66,10 @@ class Television():
                 self._volume = Television.MIN_VOLUME
             self._muted = False
     def __str__(self):
+        """
+        method to show the tv status.
+        :return: tv status.
+        """
         if self._status:
             self.display_volume = Television.MIN_VOLUME if self._muted else self._volume
         else:
